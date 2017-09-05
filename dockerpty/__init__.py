@@ -31,13 +31,13 @@ def start(client, container, interactive=True, stdout=None, stderr=None, stdin=N
 
 
 def exec_command(
-        client, container, command, interactive=True, stdout=None, stderr=None, stdin=None):
+        client, container, command, interactive=True, stdout=None, stderr=None, stdin=None, environment=None):
     """
     Run provided command via exec API in provided container.
 
     This is just a wrapper for PseudoTerminal(client, container).exec_command()
     """
-    exec_id = exec_create(client, container, command, interactive=interactive)
+    exec_id = exec_create(client, container, command, interactive=interactive, environment=environment)
 
     operation = ExecOperation(client, exec_id,
                               interactive=interactive, stdout=stdout, stderr=stderr, stdin=stdin)

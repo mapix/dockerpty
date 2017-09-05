@@ -204,8 +204,8 @@ class RunOperation(Operation):
         return self.client.inspect_container(self.container)
 
 
-def exec_create(client, container, command, interactive=True):
-    exec_id = client.exec_create(container, command, tty=interactive, stdin=interactive)
+def exec_create(client, container, command, interactive=True, environment=None):
+    exec_id = client.exec_create(container, command, tty=interactive, stdin=interactive, environment=environment)
     return exec_id
 
 
